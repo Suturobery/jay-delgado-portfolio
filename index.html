@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jay Delgado / Jr. FWD</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="js/tailwind-config.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="bg-ink text-paper font-body antialiased">
+
+<!-- Interactive particle-network background, spans #about through #contact.
+     Inserted first in the body so it naturally paints behind all section content.
+     See js/controllers/particle-network-controller.js and css/style.css. -->
+<div id="particle-network" class="particle-network-layer" aria-hidden="true"></div>
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-ink/80 backdrop-blur">
+  <div class="fade-divider-bottom"></div>
+  <div class="max-w-6xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="#top" class="font-mono text-sm tracking-tight text-paper">
+      jdelgado<span class="text-signal">@</span>dev<span class="text-signal">:~$</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest text-paper/60">
+      <a href="#about" class="hover:text-signal transition-colors">~/about</a>
+      <a href="#stack" class="hover:text-signal transition-colors">~/skills</a>
+      <a href="#tech-breakdown" class="hover:text-signal transition-colors">~/stack</a>
+      <a href="#projects" class="hover:text-signal transition-colors">~/projects</a>
+      <a href="#experience" class="hover:text-signal transition-colors">~/experience</a>
+      <a href="#contact" class="hover:text-signal transition-colors">~/contact</a>
+    </nav>
+    <a href="#contact" class="hidden md:inline-flex items-center gap-2 font-mono text-xs border border-soft px-4 py-2 rounded-full hover:border-signal hover:text-signal transition-colors">
+      <span class="w-1.5 h-1.5 rounded-full bg-signal signal-dot"></span> available for work
+    </a>
+    <button id="menu-btn" type="button" class="md:hidden text-paper" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-soft bg-ink font-mono text-sm">
+    <a href="#about" class="block px-6 py-3 border-b border-soft text-paper/70">~/about</a>
+    <a href="#stack" class="block px-6 py-3 border-b border-soft text-paper/70">~/skills</a>
+    <a href="#tech-breakdown" class="block px-6 py-3 border-b border-soft text-paper/70">~/stack</a>
+    <a href="#projects" class="block px-6 py-3 border-b border-soft text-paper/70">~/projects</a>
+    <a href="#experience" class="block px-6 py-3 border-b border-soft text-paper/70">~/experience</a>
+    <a href="#contact" class="block px-6 py-3 text-paper/70">~/contact</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <canvas id="hero-canvas" class="absolute inset-0 w-full h-full opacity-70"></canvas>
+  <div class="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/60 to-ink pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 w-full grid md:grid-cols-5 gap-10 items-center">
+    <div class="md:col-span-3">
+      <p class="font-mono text-xs md:text-sm text-signal tracking-widest mb-5" id="typewriter">&nbsp;</p>
+      <h1 class="font-display font-semibold leading-[0.95] text-5xl sm:text-6xl lg:text-7xl">
+        Jay Delgado
+      </h1>
+      <p class="mt-3 font-mono text-sm text-paper/50">Web Developer PHP / Laravel</p>
+      <p class="mt-6 max-w-xl text-paper/70 text-lg leading-relaxed">
+        Junior Full Stack Web Developer building modern web applications with PHP, Laravel, MySQL, and JavaScript.
+        Experienced in developing responsive, role-based systems from database design to deployment.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-4">
+        <a href="#projects" class="inline-flex items-center gap-2 bg-paper text-ink px-6 py-3.5 rounded-full font-medium text-sm hover:bg-signal hover:text-white transition-colors">
+          View projects
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="inline-flex items-center gap-2 border border-soft px-6 py-3.5 rounded-full font-medium text-sm hover:border-signal hover:text-signal transition-colors">
+          Get in touch
+        </a>
+      </div>
+    </div>
+
+    <div class="md:col-span-2 hidden md:block">
+      <div class="font-mono text-xs text-paper/50 glass-card rounded-2xl p-6">
+        <p><span class="text-signal">$</span> cat contact.txt</p>
+        <p class="mt-3 text-paper/70">Union, Libertad, Antique, Philippines</p>
+        <p class="text-paper/70">alvarezdelgado07@gmail.com</p>
+        <p class="mt-4"><span class="text-signal">$</span> whoami</p>
+        <p class="mt-3 text-paper/70">full-stack developer, freelancing since Jan 2025</p>
+        <p class="mt-4"><span class="text-signal">$</span> status</p>
+        <p class="mt-3 flex items-center gap-2 text-paper/70">
+          <span class="w-1.5 h-1.5 rounded-full bg-signal signal-dot"></span> available for work
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="relative max-w-6xl mx-auto px-6 md:px-10 py-28 md:py-36">
+  <div class="glow-orb w-72 h-72 -top-20 -left-20"></div>
+  <div class="relative grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-4 reveal">
+      <p class="font-mono text-xs text-signal tracking-widest mb-3">~/about</p>
+      <h2 class="font-display text-3xl md:text-4xl font-semibold">Background</h2>
+      <span class="heading-underline"></span>
+      <!-- Profile Picture -->
+      <div class="mt-8 profile-card reveal">
+        <img src="pictorial.jpeg" alt="Jay Delgado - Full-stack Web Developer" />
+      </div>
+    </div>
+    <div class="md:col-span-8 reveal">
+      <p class="text-paper/75 text-lg leading-relaxed">
+       I'm a Junior Full Stack Web Developer based in Union, Libertad, Antique, Philippines.
+       I have hands-on experience developing web applications through my OJT and freelance projects.
+       I enjoy building responsive, functional, and user-friendly websites using PHP, Laravel, MySQL,
+       JavaScript, HTML, CSS, Tailwind CSS, and Bootstrap.
+      </p>
+      <p class="mt-5 text-paper/75 text-lg leading-relaxed">
+        I completed my OJT as a Web Developer Intern at Trikee Inc., where I helped develop a web application
+        for the Local Government Unit (LGU) of Kalibo, Aklan. Since then, I have been working as a freelance
+        web developer, with experience in HTML, CSS, Tailwind CSS, Bootstrap, and JavaScript.
+      </p>
+      <div class="mt-10 grid grid-cols-3 gap-6 border-t border-soft pt-8">
+        <div>
+          <p class="font-display text-3xl font-semibold text-signal">7</p>
+          <p class="font-mono text-xs text-paper/50 mt-1">production systems shipped</p>
+        </div>
+        <div>
+          <p class="font-display text-3xl font-semibold text-signal">1</p>
+          <p class="font-mono text-xs text-paper/50 mt-1">year freelancing with experience as well</p>
+        </div>
+        <div>
+          <p class="font-display text-3xl font-semibold text-signal">2026</p>
+          <p class="font-mono text-xs text-paper/50 mt-1">BSIT graduate</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK / SKILLS -->
+<section id="stack" class="relative bg-graphite/40 overflow-hidden">
+  <div class="fade-divider-top"></div>
+  <div class="fade-divider-bottom"></div>
+  <div class="glow-orb w-96 h-96 top-1/2 -right-40 -translate-y-1/2"></div>
+  <div class="relative max-w-6xl mx-auto px-6 md:px-10 py-28 md:py-36">
+    <p class="font-mono text-xs text-signal tracking-widest mb-3 reveal">~/skills</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold mb-2 reveal">Tools I build with</h2>
+    <span class="heading-underline mb-10 reveal"></span>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-10">
+      <div class="terminal-card reveal">
+        <div class="terminal-card-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-card-title">languages-frameworks.sh</span>
+        </div>
+        <div class="terminal-card-body">
+          <span class="terminal-prompt">ls ./languages-frameworks</span>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">PHP</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Laravel</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">JavaScript (ES6+)</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">HTML5</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">CSS3</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">RESTful APIs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal-card reveal">
+        <div class="terminal-card-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-card-title">front-end.sh</span>
+        </div>
+        <div class="terminal-card-body">
+          <span class="terminal-prompt">ls ./front-end</span>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Tailwind CSS</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Bootstrap</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Sass</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Blade</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal-card reveal">
+        <div class="terminal-card-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-card-title">database.sh</span>
+        </div>
+        <div class="terminal-card-body">
+          <span class="terminal-prompt">ls ./database</span>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">MySQL</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">MariaDB</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">phpMyAdmin</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Eloquent ORM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal-card reveal">
+        <div class="terminal-card-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-card-title">tools-platforms.sh</span>
+        </div>
+        <div class="terminal-card-body">
+          <span class="terminal-prompt">ls ./tools-platforms</span>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Git</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">GitHub</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">VS Code</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">XAMPP</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Composer</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Vite</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Hostinger</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal-card reveal md:col-span-2">
+        <div class="terminal-card-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-card-title">integrations.sh</span>
+        </div>
+        <div class="terminal-card-body">
+          <span class="terminal-prompt">ls ./integrations</span>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Google OAuth (Socialite)</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">PayMongo API</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Pusher</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Chart.js</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">DomPDF</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">PHPWord</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="terminal-card reveal md:col-span-2">
+        <div class="terminal-card-bar">
+          <span class="terminal-dot red"></span>
+          <span class="terminal-dot yellow"></span>
+          <span class="terminal-dot green"></span>
+          <span class="terminal-card-title">ai-assisted-dev.sh</span>
+        </div>
+        <div class="terminal-card-body">
+          <span class="terminal-prompt">ls ./ai-assisted-dev</span>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">ChatGPT</span>
+            <span class="skill-tag border border-line rounded-full px-3 py-1.5 text-sm font-mono cursor-default">Claude</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK BREAKDOWN -->
+<section id="tech-breakdown" class="relative max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+  <p class="font-mono text-xs text-signal tracking-widest mb-3 reveal">~/tech-stack-details</p>
+  <h2 class="font-display text-3xl md:text-4xl font-semibold mb-2 reveal">Production stack</h2>
+  <span class="heading-underline mb-10 reveal"></span>
+
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="editor-card reveal">
+      <div class="editor-card-tab">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 4v16H4V4h16zm-9 4h6M11 12h6M11 16h4"/></svg>
+        <span>backend.json</span>
+      </div>
+      <div class="editor-card-body">
+        <div class="editor-line"><span class="editor-line-num">1</span><span class="editor-line-text"><strong>PHP 8.3</strong> <span class="tok-comment">// latest stable version</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">2</span><span class="editor-line-text"><strong>Laravel 13</strong> <span class="tok-comment">// modern eloquent patterns</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">3</span><span class="editor-line-text"><strong>MySQL</strong> <span class="tok-comment">// primary database</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">4</span><span class="editor-line-text"><strong>Eloquent ORM</strong> <span class="tok-comment">// database layer</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">5</span><span class="editor-line-text"><strong>Middleware</strong> <span class="tok-comment">// auth & authorization</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">6</span><span class="editor-line-text"><strong>Security</strong> <span class="tok-comment">// CSRF, hashing, OTP</span></span></div>
+      </div>
+    </div>
+
+    <div class="editor-card reveal">
+      <div class="editor-card-tab">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 4v16H4V4h16zm-9 4h6M11 12h6M11 16h4"/></svg>
+        <span>frontend.json</span>
+      </div>
+      <div class="editor-card-body">
+        <div class="editor-line"><span class="editor-line-num">1</span><span class="editor-line-text"><strong>CSS3</strong> <span class="tok-comment">// styling & animations</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">2</span><span class="editor-line-text"><strong>JavaScript (ES6+)</strong> <span class="tok-comment">// interactive components</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">3</span><span class="editor-line-text"><strong>Blade</strong> <span class="tok-comment">// PHP templating engine</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">4</span><span class="editor-line-text"><strong>Tailwind CSS</strong> <span class="tok-comment">// utility-first framework</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">5</span><span class="editor-line-text"><strong>Bootstrap</strong> <span class="tok-comment">// component library</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">6</span><span class="editor-line-text"><strong>Chart.js</strong> <span class="tok-comment">// dashboard visualizations</span></span></div>
+      </div>
+    </div>
+
+    <div class="editor-card reveal">
+      <div class="editor-card-tab">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 4v16H4V4h16zm-9 4h6M11 12h6M11 16h4"/></svg>
+        <span>deployment.json</span>
+      </div>
+      <div class="editor-card-body">
+        <div class="editor-line"><span class="editor-line-num">1</span><span class="editor-line-text"><strong>Hostinger</strong> <span class="tok-comment">// web hosting provider</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">2</span><span class="editor-line-text"><strong>MySQL</strong> <span class="tok-comment">// managed database</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">3</span><span class="editor-line-text"><strong>Apache</strong> <span class="tok-comment">// web server</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">4</span><span class="editor-line-text"><strong>Cloudflare</strong> <span class="tok-comment">// CDN & DNS</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">5</span><span class="editor-line-text"><strong>Git/GitHub</strong> <span class="tok-comment">// version control</span></span></div>
+        <div class="editor-line"><span class="editor-line-num">6</span><span class="editor-line-text"><strong>Composer</strong> <span class="tok-comment">// dependency management</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="max-w-6xl mx-auto px-6 md:px-10 py-28 md:py-36">
+  <p class="font-mono text-xs text-signal tracking-widest mb-3 reveal">~/projects</p>
+  <h2 class="font-display text-3xl md:text-4xl font-semibold mb-2 reveal">Selected work</h2>
+  <span class="heading-underline mb-4 reveal"></span>
+  <p class="text-paper/50 text-sm mb-14 reveal">Hover a card to tilt it, hover the screenshot stack to fan it out, click any shot for the full gallery.</p>
+
+  <!-- Populated by js/views/projects-view.js from js/models/projects-data.js -->
+  <div id="projects-grid" class="grid md:grid-cols-2 gap-x-6 gap-y-10"></div>
+</section>
+
+<!-- SCREENSHOT LIGHTBOX (used by js/controllers/gallery-controller.js) -->
+<div id="lightbox" class="hidden hidden-lightbox fixed inset-0 z-[100] bg-ink/95 flex items-center justify-center px-4">
+  <button id="lightbox-close" type="button" aria-label="Close" class="absolute top-6 right-6 text-paper/70 hover:text-signal text-3xl leading-none">&times;</button>
+  <button id="lightbox-prev" type="button" aria-label="Previous screenshot" class="absolute left-3 md:left-8 text-paper/60 hover:text-signal text-4xl leading-none">&#8249;</button>
+  <div class="max-w-4xl w-full">
+    <img id="lightbox-img" src="" alt="" class="w-full max-h-[75vh] object-contain rounded-2xl border border-soft" />
+    <p id="lightbox-caption" class="mt-4 text-center font-mono text-xs text-paper/50"></p>
+  </div>
+  <button id="lightbox-next" type="button" aria-label="Next screenshot" class="absolute right-3 md:right-8 text-paper/60 hover:text-signal text-4xl leading-none">&#8250;</button>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="relative bg-graphite/40 overflow-hidden">
+  <div class="fade-divider-top"></div>
+  <div class="fade-divider-bottom"></div>
+  <div class="glow-orb w-80 h-80 -bottom-32 -left-32"></div>
+  <div class="relative max-w-6xl mx-auto px-6 md:px-10 py-28 md:py-36">
+    <p class="font-mono text-xs text-signal tracking-widest mb-3 reveal">~/experience</p>
+    <h2 class="font-display text-3xl md:text-4xl font-semibold mb-2 reveal">How I got here</h2>
+    <span class="heading-underline mb-10 reveal"></span>
+
+    <div class="space-y-0 mt-10">
+      <div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-10 border-t border-soft py-8">
+        <p class="font-mono text-xs text-paper/40 w-48 shrink-0">Jan 2025 &mdash; Present</p>
+        <div>
+          <h3 class="font-display text-lg font-semibold">Freelance Web Developer, Self-Employed</h3>
+          <p class="text-paper/60 text-sm mt-2 leading-relaxed">
+            Built custom web applications and management systems using PHP, Laravel, and MySQL. 
+            Managed projects from planning and development to testing and deployment.
+          </p>
+        </div>
+      </div>
+      <div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-10 border-t border-soft py-8">
+        <p class="font-mono text-xs text-paper/40 w-48 shrink-0">April 2026 &mdash; May 2026</p>
+        <div>
+          <h3 class="font-display text-lg font-semibold">Web Developer Intern (OJT), Trikee Inc.</h3>
+          <p class="text-paper/60 text-sm mt-2 leading-relaxed">
+            Assisted in the development of a web application for the Local Government Unit (LGU) of Kalibo, Aklan.
+            Supported the development team with front-end and back-end tasks during the project.
+          </p>
+        </div>
+      </div>
+      <div class="reveal flex flex-col md:flex-row md:items-baseline gap-2 md:gap-10 border-t border-b border-soft py-8">
+        <p class="font-mono text-xs text-paper/40 w-48 shrink-0">2022 &mdash; 2026</p>
+        <div>
+          <h3 class="font-display text-lg font-semibold">BS in Information Technology</h3>
+          <p class="text-paper/60 text-sm mt-2 leading-relaxed">University of Antique, Libertad Campus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="relative max-w-6xl mx-auto px-6 md:px-10 py-28 md:py-40 text-center overflow-hidden">
+  <div class="glow-orb w-96 h-96 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+  <div class="relative">
+    <p class="font-mono text-xs text-signal tracking-widest mb-3 reveal">~/contact</p>
+    <h2 class="font-display text-4xl md:text-6xl font-semibold leading-tight reveal">
+      Let's build<br class="hidden md:block"> something<span class="cursor-blink"></span>
+    </h2>
+    <p class="mt-6 text-paper/60 max-w-md mx-auto reveal">
+      Open to freelance projects and junior developer roles. Reach out and I'll get back to you.
+    </p>
+    <div class="mt-10 flex flex-wrap justify-center gap-4 reveal">
+      <a href="mailto:alvarezdelgado07@gmail.com" class="inline-flex items-center gap-2 bg-paper text-ink px-7 py-3.5 rounded-full font-medium text-sm hover:bg-signal hover:text-white transition-colors">
+        alvarezdelgado07@gmail.com
+      </a>
+    </div>
+    <div class="mt-8 flex justify-center gap-6 font-mono text-xs text-paper/40 reveal">
+      <a href="https://github.com/Suturobery" target="_blank" rel="noopener noreferrer" class="hover:text-signal transition-colors">GitHub</a>
+      <a href="https://www.linkedin.com/in/jay-delgado-813236402?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer" class="hover:text-signal transition-colors">LinkedIn</a>
+      <a href="https://web.facebook.com/jay.delgado.1120" target="_blank" rel="noopener noreferrer" class="hover:text-signal transition-colors">Facebook</a>
+    </div>
+  </div>
+</section>
+
+<footer class="relative">
+  <div class="fade-divider-top"></div>
+  <div class="max-w-6xl mx-auto px-6 md:px-10 py-8 flex flex-col md:flex-row items-center justify-between gap-4 font-mono text-[11px] text-paper/30">
+    <p>jdelgado@dev:~$ echo "exploring new technologies, one project at a time"</p>
+    <p>&copy; 2026 Jay Delgado &mdash; all rights reserved</p>
+  </div>
+</footer>
+
+<!--
+  Scripts are split MVC-style:
+  models/      -> data (icon list, project list)
+  views/       -> functions that turn data into DOM markup
+  controllers/ -> behavior/interaction wiring (nav, typewriter, scroll reveal, gallery, 3D scene)
+  Load order matters: models before views/controllers that consume them.
+-->
+<script src="js/models/icons-data.js"></script>
+<script src="js/models/projects-data.js"></script>
+
+<script src="js/views/projects-view.js"></script>
+
+<script src="js/controllers/nav-controller.js"></script>
+<script src="js/controllers/typewriter-controller.js"></script>
+<script src="js/controllers/scroll-reveal-controller.js"></script>
+<script src="js/controllers/gallery-controller.js"></script>
+<script src="js/controllers/tilt-controller.js"></script>
+<script src="js/controllers/hero-scene-controller.js"></script>
+<script src="js/controllers/particle-network-controller.js"></script>
+<script src="js/controllers/custom-cursor-controller.js"></script>
+
+</body>
+</html>
