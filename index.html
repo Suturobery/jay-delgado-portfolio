@@ -60,24 +60,48 @@
 
     <section id="about" class="section section-light">
       <div class="section-kicker mono">01 / About</div>
-      <div class="about-layout">
-        <div class="about-image reveal">
-          <img src="pictorial.jpeg" alt="Jay Delgado, full-stack web developer">
-          <span class="image-caption mono">Jay Delgado — 2026</span>
+      <article class="profile-card reveal" aria-label="Jay Delgado profile">
+        <div class="profile-photo">
+          <img src="pictorial.jpeg" alt="Jay Delgado, Full Stack Web Developer">
+          <span class="profile-status mono"><i aria-hidden="true"></i> Available for work</span>
         </div>
-        <div class="about-copy">
-          <p class="section-intro reveal">I build practical websites and role-based tools that are clear for people to use and dependable for teams to run.</p>
-          <div class="about-text reveal">
-            <p>Based in Union, Libertad, Antique, I work across the full web-development process: planning the database, building responsive interfaces, implementing backend logic, and preparing a project for deployment.</p>
-            <p>My OJT at Trikee Inc. involved supporting an LGU web application for Kalibo, Aklan. Since then, I have continued developing management systems as a freelance web developer.</p>
+        <div class="profile-content">
+          <div class="profile-heading">
+            <div>
+              <p class="mono">PROFILE / 2026</p>
+              <h2>Jay A. Delgado</h2>
+              <span>Full Stack Web Developer</span>
+            </div>
+            <p class="profile-location mono">Union, Libertad<br>Antique, PH</p>
           </div>
-          <div class="fact-row reveal">
-            <div><strong>06</strong><span>production systems<br>shipped</span></div>
-            <div><strong>01</strong><span>year freelancing<br>experience</span></div>
-            <div><strong>2026</strong><span>BSIT<br>graduate</span></div>
+          <p class="profile-summary">I build practical websites and role-based tools that are clear for people to use and dependable for teams to run.</p>
+          <div class="profile-actions">
+            <a class="profile-primary" href="assets/Jay_Delgado_Resume.pdf" download>Download resume <b aria-hidden="true">↓</b></a>
+            <a class="profile-link mono" href="https://github.com/Suturobery" target="_blank" rel="noopener noreferrer">GitHub <b aria-hidden="true">↗</b></a>
+            <a class="profile-link mono" href="https://www.linkedin.com/in/jay-delgado-813236402?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" target="_blank" rel="noopener noreferrer">LinkedIn <b aria-hidden="true">↗</b></a>
+          </div>
+          <div class="profile-tabs" role="tablist" aria-label="Profile details">
+            <button id="profile-overview-tab" type="button" role="tab" aria-selected="true" aria-controls="profile-overview" data-profile-tab="overview">Overview</button>
+            <button id="profile-tech-tab" type="button" role="tab" aria-selected="false" aria-controls="profile-tech" data-profile-tab="tech">Tech stack</button>
+            <button id="profile-experience-tab" type="button" role="tab" aria-selected="false" aria-controls="profile-experience" data-profile-tab="experience">Experience</button>
+          </div>
+          <div class="profile-panels">
+            <section id="profile-overview" class="profile-panel" role="tabpanel" aria-labelledby="profile-overview-tab" data-profile-panel="overview">
+              <p>Based in Union, Libertad, Antique, I work across the full web-development process: planning the database, building responsive interfaces, implementing backend logic, and preparing a project for deployment.</p>
+              <p>My OJT at Trikee Inc. involved supporting an LGU web application for Kalibo, Aklan. Since then, I have continued developing management systems as a freelance web developer.</p>
+            </section>
+            <section id="profile-tech" class="profile-panel" role="tabpanel" aria-labelledby="profile-tech-tab" data-profile-panel="tech" hidden>
+              <p class="profile-panel-label mono">Core toolkit</p>
+              <div class="profile-tags"><span>PHP</span><span>Laravel</span><span>JavaScript</span><span>MySQL</span><span>Tailwind CSS</span><span>Bootstrap</span><span>Figma</span><span>GitHub</span><span>SEO</span><span>Cloudflare</span><span>Vercel</span><span>Video editing</span><span>3D creation</span></div>
+              <a class="profile-panel-link mono" href="#capabilities">View the full tech stack <b aria-hidden="true">↓</b></a>
+            </section>
+            <section id="profile-experience" class="profile-panel" role="tabpanel" aria-labelledby="profile-experience-tab" data-profile-panel="experience" hidden>
+              <div class="profile-experience-item"><span class="mono">2025 — Present</span><p><strong>Freelance Web Developer</strong>Build custom web applications and management systems from planning through deployment.</p></div>
+              <div class="profile-experience-item"><span class="mono">2026</span><p><strong>Web Developer Intern, Trikee Inc.</strong>Supported LGU web application development for Kalibo, Aklan.</p></div>
+            </section>
           </div>
         </div>
-      </div>
+      </article>
     </section>
 
     <section id="capabilities" class="section capabilities">
@@ -89,7 +113,7 @@
       <div class="capability-list">
         <article class="capability reveal"><span class="mono">01</span><h3>Full-stack systems</h3><p>PHP, Laravel, JavaScript, HTML, CSS, Blade, Tailwind CSS, and Bootstrap.</p></article>
         <article class="capability reveal"><span class="mono">02</span><h3>Data &amp; integrations</h3><p>MySQL, MariaDB, Eloquent ORM, REST APIs, Google OAuth, PayMongo, Pusher, and reports.</p></article>
-        <article class="capability reveal"><span class="mono">03</span><h3>Shipping &amp; support</h3><p>Git, GitHub, Composer, Vite, Hostinger, practical troubleshooting, and collaborative delivery.</p></article>
+        <article class="capability reveal"><span class="mono">03</span><h3>Shipping &amp; growth</h3><p>Git, GitHub, Cloudflare, Vercel, Hostinger, SEO, practical troubleshooting, and collaborative delivery.</p></article>
       </div>
       <div class="tech-stack-groups" aria-label="Full technology stack">
         <section class="tech-group reveal" aria-labelledby="stack-core">
@@ -140,6 +164,8 @@
             <article class="tech-mark"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="npm logo"><span>npm</span></article>
             <article class="tech-mark"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman logo"><span>Postman</span></article>
             <article class="tech-mark"><img src="https://cdn.simpleicons.org/hostinger" alt="Hostinger logo"><span>Hostinger</span></article>
+            <article class="tech-mark"><img src="https://cdn.simpleicons.org/cloudflare" alt="Cloudflare logo"><span>Cloudflare</span></article>
+            <article class="tech-mark"><img src="https://cdn.simpleicons.org/vercel" alt="Vercel logo"><span>Vercel</span></article>
           </div>
         </section>
 
@@ -169,8 +195,17 @@
           </div>
         </section>
 
+        <section class="tech-group reveal" aria-labelledby="stack-growth">
+          <div class="tech-group-heading"><p class="mono">G / GROW</p><h3 id="stack-growth">Discovery &amp; creative</h3></div>
+          <div class="tech-marks">
+            <article class="tech-mark tech-mark--text"><b>SEO</b><span>Search optimization</span></article>
+            <article class="tech-mark tech-mark--text"><b>VID</b><span>Video editing</span></article>
+            <article class="tech-mark tech-mark--text"><b>3D</b><span>3D creation</span></article>
+          </div>
+        </section>
+
         <section class="tech-group reveal" aria-labelledby="stack-ai">
-          <div class="tech-group-heading"><p class="mono">G / ASSIST</p><h3 id="stack-ai">AI-assisted development</h3></div>
+          <div class="tech-group-heading"><p class="mono">H / ASSIST</p><h3 id="stack-ai">AI-assisted development</h3></div>
           <div class="tech-marks">
             <article class="tech-mark tech-mark--text"><b>AI</b><span>ChatGPT</span></article>
             <article class="tech-mark"><img src="https://cdn.simpleicons.org/anthropic" alt="Anthropic logo"><span>Claude</span></article>
@@ -249,6 +284,7 @@
   <script src="js/models/projects-data.js"></script>
   <script src="js/views/projects-view.js"></script>
   <script src="js/controllers/nav-controller.js"></script>
+  <script src="js/controllers/profile-tabs-controller.js"></script>
   <script src="js/controllers/scroll-reveal-controller.js"></script>
   <script src="js/controllers/gallery-controller.js"></script>
   <script src="js/controllers/contribution-graph-controller.js"></script>
