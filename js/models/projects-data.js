@@ -9,6 +9,7 @@ const projectsData = [
     category: 'academic',
     title: 'UALC Pre-Registration System',
     period: 'Mar 2026 - May 2026',
+    liveUrl: 'https://ualc-prereg.site/',
     description: 'A full-stack pre-registration system built for the University of Antique, Libertad Campus, with role-based access control and Google OAuth login. Includes real-time dashboards, PWA support, and secure file uploads with email OTP verification.',
     stack: ['Laravel 12', 'PHP 8.2', 'MySQL', 'Bootstrap', 'Tailwind CSS', 'Chart.js'],
     images: [
@@ -25,6 +26,7 @@ const projectsData = [
     category: 'travel & tourism',
     title: 'Tourist Track System',
     period: 'Feb 2026 - Apr 2026',
+    liveUrl: 'https://touristtrack.site/',
     description: 'A QR-code-based visitor check-in system with live dashboard statistics and automated PDF/CSV reporting. Integrated with Google OAuth login, OTP email verification, and reCAPTCHA v2 bot protection.',
     stack: ['Laravel 12', 'MySQL', 'Pusher', 'DomPDF', 'Bootstrap'],
     images: [
