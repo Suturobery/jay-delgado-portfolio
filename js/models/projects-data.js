@@ -40,11 +40,12 @@ const projectsData = [
   {
     slug: 'cafehugo',
     index: '03',
-    category: 'café pos',
-    title: 'Café Hugo POS & Reservations',
+    category: 'café operations',
+    title: 'Café Hugo Operations System',
     period: 'Sep 2026 - Present',
-    description: 'A café operations platform covering the full counter workflow: a walk-in POS terminal with cash-drawer shift sessions and receipts, an order queue with a live pickup board, and table or event reservations with GCash deposits and payment-proof verification. Back office modules handle inventory with low-stock alerts, recipes, staff sales reports, and audit logs.',
-    stack: ['Laravel 13', 'PHP 8.3', 'MySQL', 'Tailwind CSS'],
+    liveUrl: 'https://cafehugo.online/',
+    description: 'Contributed to a team-built three-portal café platform (customer, staff, admin) covering online ordering, a walk-in POS terminal, reservations, inventory with low-stock alerts, manual GCash payment-proof verification, and SMS updates. Includes Pest feature tests.',
+    stack: ['Laravel 13', 'PHP 8.3', 'MySQL', 'Pest'],
     images: [
       { file: 'pos-terminal.png', label: 'POS terminal' },
       { file: 'homepage.png', label: 'Homepage' },
@@ -58,8 +59,8 @@ const projectsData = [
     category: 'desktop software',
     title: 'Smart ID Maker',
     period: 'Jul 2026 - Present',
-    description: 'An offline Windows desktop app for schools, training centers, and review centers that manages member records and produces print-ready PVC ID cards. Ships a drag & drop template designer, batch Excel/CSV imports guarded against wrong-file accidents, batch export for PVC printing, and password-protected backup, reset, and restore.',
-    stack: ['Electron', 'PHP 8.3', 'JavaScript', 'Offline-first'],
+    description: 'An offline ID card application for schools, training centers, and review centers: multi-institution student management, Excel and photo imports, a drag-and-drop template designer, QR codes, and batch PDF/PVC printing. Ships as a Windows desktop app.',
+    stack: ['Laravel 13', 'PHP 8.3', 'SQLite', 'Alpine.js', 'Electron'],
     images: [
       { file: 'app-login.png', label: 'Desktop app sign-in' },
     ],

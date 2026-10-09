@@ -1,5 +1,5 @@
 // CONTROLLER: hero tagline typewriter effect. Edit the `lines` array to change what cycles through.
-const typewriterLines = ["Full Stack Web Developer", "PHP & Laravel", "shipping role-based systems"];
+const typewriterLines = ["Junior PHP/Laravel Developer", "PHP & Laravel", "shipping role-based systems"];
 const typewriterEl = document.getElementById('typewriter');
 let twLineIndex = 0, twCharIndex = 0, twDeleting = false;
 
