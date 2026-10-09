@@ -62,7 +62,13 @@ const projectsData = [
     description: 'An offline ID card application for schools, training centers, and review centers: multi-institution student management, Excel and photo imports, a drag-and-drop template designer, QR codes, and batch PDF/PVC printing. Ships as a Windows desktop app.',
     stack: ['Laravel 13', 'PHP 8.3', 'SQLite', 'Alpine.js', 'Electron'],
     images: [
-      { file: 'app-login.png', label: 'Desktop app sign-in' },
+      { file: 'dashboard.png', label: 'Dashboard' },
+      { file: 'designer.png', label: 'Template designer' },
+      { file: 'students.png', label: 'Student records' },
+      { file: 'generate.png', label: 'Generate IDs' },
+      { file: 'print-preview.png', label: 'Print preview' },
+      { file: 'gallery.png', label: 'Template gallery' },
+      { file: 'login.png', label: 'Sign in' },
     ],
   },
   {
